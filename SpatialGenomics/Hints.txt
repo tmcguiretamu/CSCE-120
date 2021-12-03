@@ -1,0 +1,59 @@
+to load comma separated data from a file:
+
+1.  Open the file (See Module 9 and source code)
+   declare an ifstream object and attach it to the input file 
+   check to see if the file opened successfully
+      if it didn't, output the specified error message and call exit(1)
+
+2. Skip the first line of the file (which has the header information) 
+      use getline on the file and check to see if it matches the header line exactly
+      if it doesn't then print an invalid input error message
+      
+3. Now begin reading the data
+   Use getline to get a line
+   Validate the line.  it should have 8 commas, no more that 8 decimal points, and the rest  [0-9]
+   
+   Declare a stringstream to read the file using ',' as the separator  (Modules 8 slides, Module 9 source code)
+   The id is a string containing only [0-9] characters
+   fov is an int, and the rest are doubles
+   If any of these fail print an invalid input error message
+   
+   If all input for that line is valid, then use the insert method to insert a new record into the linked list
+      The record is to be inserted in order (CellData operator < needs to be overloaded)
+         records in fov order, and if fovs are equal, then compare ids.
+   
+4. To overload the == operator, you must compare all fields separately 
+      e.g. if (this.field != rhs.field)  return false ... 
+      
+5. You now need to create the linked list.   
+   You can look at NumberList.h and NumberList.cpp in my module 18 source code repository for guidance.
+   That inserted numbers in increasing order.  If you've correctly overload the < operator, you should be OK.)
+   Also look at the slides for Module 18.
+      
+6. Remember that the specifications call for both a head and a tail pointer (like in your Lab Work.)
+      You'll have to adapt your code for that.
+      
+7. The destructor is trivial if you've implemented the clear() function.  (Just call it, right?)
+
+8. My example didn't implement the Rule of Three, so you'll need to do that also.  
+   The copy constructor will have to do a deep copy.  Traverse the list and deep copy each node.
+   Overloading the assignment operator is the next task.  
+   You'll have to test against self-assignment:   e.g. if (this != &rhs) ...
+   Then make sure that you clear() the left-hand side so you don't have a memory leak.
+   At that point you could either use the copy constructor or just copy the logic of it.
+     
+9. Insertion logic is going to be very similar to the insertNode code for NumberList we did in the lecture 
+   Once again, make sure you are updating the tail pointer wherever necessary.
+   
+10. The same comments hold for remove().  It's similar to my deleteNode code 
+
+11. clear() is pretty much like the NumberList destructor.  Make sure to set tail to nullptr.
+
+12. To implement the print() method you need to return a string.  
+    The most straightforward way to do this is to build up a stringstream object.
+    Then, use the str() method of the streamstring to return the stream.
+    
+13. Hint for implementing average():  Look at the implementation of variance()
+
+14.  I'll let you figure out outliers() on your own.    
+   
