@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void showValues(int [], int); // Function prototype
+void showValues(const int [], const int); // Function prototype
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
 // of the array are displayed.                     * 
 //**************************************************
 
-void showValues(int nums[], int size)
+void showValues(const int nums[], const int size)
 {
    for (int index = 0; index < size; index++)
       cout << nums[index] << " ";
