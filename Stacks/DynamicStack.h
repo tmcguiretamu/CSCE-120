@@ -8,7 +8,7 @@ template <class T>
 class DynamicStack
 {
 private:
-   // Structure for the stach nodes
+   // Structure for the stack nodes
    struct StackNode
    {
       T value;          // Value in the node
@@ -30,6 +30,16 @@ public:
    void pop(T &);
    bool isEmpty();
 };
+
+
+// IMPORTANT NOTE:  Templated class functions, unlike 
+// regular class functions, do not go into a separate
+// implementation file, since they are "templates" for
+// code, not actual code.  Current practice is to put 
+// them in the header file. If you don't you'll get 
+// linker errors.  Perhaps some day, compilers and 
+// linkers will be "smart" enough to separate the two.
+
 
 //***************************************************
 //  Destructor                                      *
