@@ -19,8 +19,8 @@ int main()
 
 bool isPalindrome(long num)
 {
-   int num_digits = 0;
-   int multiplier = 1;
+   unsigned num_digits = 0;
+   long multiplier = 1;
    long newValue = 0;
    
    // compute last digit
